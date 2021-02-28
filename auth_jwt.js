@@ -7,6 +7,7 @@ var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 opts.secretOrKey = process.env.SECRET_KEY;
 
+// checks if the token matches and if it does then approve the user
 passport.use(new JwtStrategy(opts,
     function(jwt_payload,done)
     {
