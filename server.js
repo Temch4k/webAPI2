@@ -54,7 +54,7 @@ function  getJSONObjectMovieRequirement(req, msg, stat)
     {
         json.query = req.query;
     }
-    if(status != null)
+    if(stat != null)
     {
         json.status = stat;
     }
@@ -64,7 +64,7 @@ function  getJSONObjectMovieRequirement(req, msg, stat)
 router.post('/signup', function (req,res) {
     if(!req.body.username || !req.body.password)
     {
-        res.json({success:true, msg:'Password or username missing.'});
+        res.json({success:false, msg:'Password or username missing.'});
     }
     else{
         var newUser = {
@@ -99,7 +99,7 @@ router.route('/testcollection')
     .delete(authController.isAuthenticated,function(req,res)
     {
         console.log(req.body);
-        status = 200;
+        var status = 200;
         res = res.status(status);
         if(req.get('Content-Type')){
             res = res.type(req.get('Content-Type'));
@@ -110,7 +110,7 @@ router.route('/testcollection')
     .put(authJwtController.isAuthenticated,function(req,res)
     {
         console.log(req.body);
-        status = 200;
+        var status = 200;
         res = res.status(status);
         if(req.get('Content-Type')){
             res = res.type(req.get('Content-Type'));
@@ -121,7 +121,7 @@ router.route('/testcollection')
     .post(function (req,res)
     {
         console.log(req.body);
-        status = 200;
+        var status = 200;
         res = res.status(status);
         if(req.get('Content-Type')){
             res = res.type(req.get('Content-Type'));
@@ -132,7 +132,7 @@ router.route('/testcollection')
     .get(function (req,res)
     {
         console.log(req.body);
-        status = 200;
+        var status = 200;
         res = res.status(status);
         var o = getJSONObjectMovieRequirement(req, "GET movie", status);
 
